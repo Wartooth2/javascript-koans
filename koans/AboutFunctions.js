@@ -21,9 +21,9 @@ describe("About Functions", function() {
       return message;
     }
 
-    expect(getMessage()).toBe("Inner");
+    expect(getMessage()).toBe("Outer");
     expect(overrideMessage()).toBe("Inner");
-    expect(message).toBe("Inner");
+    expect(message).toBe("Outer");
   });
 
   it("should have lexical scoping", function () {
@@ -52,7 +52,7 @@ describe("About Functions", function() {
     var mysteryFunction3 = makeMysteryFunction(3);
     var mysteryFunction5 = makeMysteryFunction(5);
 
-    expect(mysteryFunction3(10) + mysteryFunction5(5)).toBe(15);
+    expect(mysteryFunction3(10) + mysteryFunction5(5)).toBe(23);
   });
 
   it("should allow extra function arguments", function () {
@@ -77,7 +77,7 @@ describe("About Functions", function() {
       return argsArray.join(",");
     }
 
-    expect(returnAllArgs("first", "second", "third")).toBe("first", "second", "third");
+    expect(returnAllArgs("first", "second", "third")).toBe("first,second,third");
   });
 
   it("should pass functions as values", function () {
@@ -91,10 +91,10 @@ describe("About Functions", function() {
     };
 
     var praiseSinger = { givePraise: appendRules };
-    expect(praiseSinger.givePraise("John")).toBe("John Rules");
+    expect(praiseSinger.givePraise("John")).toBe("John rules!");
 
     praiseSinger.givePraise = appendDoubleRules;
-    expect(praiseSinger.givePraise("Mary")).toBe("Mary totally rules");
+    expect(praiseSinger.givePraise("Mary")).toBe("Mary totally rules!");
 
   });
 });
