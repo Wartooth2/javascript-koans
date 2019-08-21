@@ -29,8 +29,8 @@ describe("About Higher Order Functions", function () {
     var reduction = _(numbers).reduce(
             function(/* result from last call */ memo, /* current */ x) { return memo + x }, /* initial */ 0);
 
-    expect(reduction).toBe(FILL_ME_IN);
-    expect(numbers).toEqual(FILL_ME_IN);
+    expect(reduction).toBe(6);
+    expect(numbers).toEqual([1,2,3]);
   });
 
   it("should use 'forEach' for simple iteration", function () {
@@ -42,7 +42,7 @@ describe("About Higher Order Functions", function () {
 
     _(numbers).forEach(isEven);
 
-    expect(msg).toEqual("2");
+    expect(msg).toEqual('falsetruefalse');
     expect(numbers).toEqual([1,2,3]);
   });
 
@@ -63,13 +63,13 @@ describe("About Higher Order Functions", function () {
     var isEven = function(x) { return x % 2 === 0 };
 
     expect(_(onlyEven).every(isEven)).toBe(true);
-    expect(_(mixedBag).some(isEven)).toBe(false);
+    expect(_(mixedBag).some(isEven)).toBe(true);
   });
 
   it("should use range to generate an array", function() {
       expect(_.range(3)).toEqual([0,1,2]);
-      expect(_.range(1, 4)).toEqual([0,1,2,3]);
-      expect(_.range(0, -4, -1)).toEqual([0]);
+      expect(_.range(1, 4)).toEqual([1,2,3]);
+      expect(_.range(0, -4, -1)).toEqual([0,-1,-2,-3]);
   });
 
   it("should use flatten to make nested arrays easy to work with", function() {
@@ -83,7 +83,7 @@ describe("About Higher Order Functions", function () {
                        .reduce(function (sum, x) { return sum + x })
                        .value();
 
-      expect(result).toEqual(12);
+      expect(result).toEqual(6);
   });
 
 });
